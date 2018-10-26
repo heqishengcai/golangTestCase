@@ -9,7 +9,9 @@ go version go1.7.5 darwin/amd64
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("test here")
@@ -112,4 +114,17 @@ func main() {
 	//default:
 	//	fmt.Println("default case")
 	//}
+
+	//var a int32 = 10
+	//var b int32 = 200
+	//
+
+	//int, err := strconv.Atoi(string)
+	//c := "1234"
+	//bb, _ := strconv.Atoi(c)
+	//fmt.Println(bb)
+	//f := []int()
+	//fmt.Println(a + b)
+	//fmt.Println(d + e)
+
 }
