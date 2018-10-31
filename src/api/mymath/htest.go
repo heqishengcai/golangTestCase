@@ -1,4 +1,4 @@
-package gotest
+package main
 
 //
 //
@@ -11,8 +11,7 @@ package gotest
 //
 //
 
-
-
+/*
 gosublime
 
 {
@@ -23,10 +22,10 @@ gosublime
 }
 
 
-golang config 
+golang config
 
 {
     "PATH": "/usr/local/Cellar/go/1.11/libexec/bin",
     "GOPATH": "/opt/webroot/golang/gotest"
 }
-
+*/
