@@ -8,7 +8,7 @@ import (
 func main() {
 
 }
-s
+
 func printPointer() {
 	s := make([]byte, 200)
 	ptr := unsafe.Pointer(&s[0])
