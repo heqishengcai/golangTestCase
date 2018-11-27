@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-
+	printPointer()
 }
 
 func printPointer() {
