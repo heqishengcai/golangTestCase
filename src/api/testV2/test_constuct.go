@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type options struct {
 	a int64
@@ -41,9 +39,15 @@ func WriteC(s map[int]string) ServerOption {
 func main() {
 	opt1 := WriteA(int64(1))
 	opt2 := WriteB("test")
-	opt3 := WriteC(make(map[int]string, 0))
+	mapC := make(map[int]string, 0)
+	mapC[1] = "aaa"
+	mapC[10] = "bbbb"
+	opt3 := WriteC(mapC)
 
 	op := NewOption(opt1, opt2, opt3)
+
+	//op := new(options)
+	//op.WriteA(int64(1)).WriteB("test").WriteC(make(map[int]string, 0))
 
 	fmt.Println(op.a, op.b, op.c)
 }
