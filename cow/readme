@@ -1,0 +1,28 @@
+cow
+
+cow据说是shadowsocks-go作者的另一个开发项目，根据项目介绍简单的配置，就可以在本机启动一个http代理，以shadowsocks为二级代理
+
+github: https://github.com/cyfdecyf/cow
+
+安装
+curl -L git.io/cow | bash
+配置
+在配置文件$HOME/.cow/rc中添加两行配置， 分别是cow的监听和代理
+listen = http://127.0.0.1:7777  #默认已添加
+proxy = socks5://127.0.0.1:1080
+
+设置环境变量
+export http_proxy=http://127.0.0.1:7777
+export https_proxy=http://127.0.0.1:7777
+
+source ~/.profile
+查看变量是否生效
+echo $http_proxy
+
+启动cow
+
+cow &
+
+然后如果遇到错误 遇到错误：fatal error: MSpanList_Insert
+
+可直接用如上文件覆盖已有cow文件即可。
