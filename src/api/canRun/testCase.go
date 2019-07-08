@@ -1,24 +1,42 @@
+// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
+// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+// See page 231.
+
+// Pipeline3 demonstrates a finite 3-stage pipeline
+// with range, close, and unidirectional channel types.
 package main
 
-import (
-	"fmt"
-	"io"
-	"net/http"
-)
+import "fmt"
 
-func main() {
-	http.Handle("/hello", &ServeMux{})
-	err := http.ListenAndServe(":9090", nil)
-	if err != nil {
-		fmt.Println("err", err.Error())
+//!+
+func counter(out chan<- int) {
+	for x := 0; x < 100; x++ {
+		out <- x
+	}
+	close(out)
+}
+
+func squarer(out chan<- int, in <-chan int) {
+	for v := range in {
+		out <- v * v
+	}
+	close(out)
+}
+
+func printer(in <-chan int) {
+	for v := range in {
+		fmt.Println(v)
 	}
 }
 
-type ServeMux struct {
-}
+func main() {
+	naturals := make(chan int)
+	squares := make(chan int)
 
-func (p *ServeMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("get one request")
-	fmt.Println(r.RequestURI)
-	io.WriteString(w, "hello world1")
+	go counter(naturals)
+	//go squarer(squares, naturals)
+	go squarer(naturals, squares)
+	printer(squares)
+	fmt.Println(cap(naturals))
 }
